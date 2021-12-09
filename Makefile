@@ -2,7 +2,7 @@ LOCAL_DEV_CLUSTER ?= kind-local-dev-cluster
 NOW := $(shell date +%m_%d_%Y_%H_%M)
 SERVICE_NAME := example-dead-letter
 
-onboard: install dev
+onboard: install
 
 build-new-local-image:
 	kubectl ctx $(LOCAL_DEV_CLUSTER)
@@ -41,3 +41,6 @@ install:
 
 dev:
 	npm run dev
+
+open:
+	code .
