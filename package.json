@@ -1,0 +1,55 @@
+{
+  "name": "example-dead-letter",
+  "version": "0.0.0-development",
+  "description": "example-dead-letter",
+  "type": "module",
+  "bin": {
+    "start": "./src/bin/start.mjs"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "dev": "DEBUG=${DEBUG:-example*} nodemon",
+    "lint:fix": "eslint --fix src __tests__ --ext=.js,.ts",
+    "lint": "eslint src __tests__ --ext=.js,.ts",
+    "prepare": "husky install || echo 'Husky not installed'",
+    "start:build": "DEBUG=${DEBUG:-example*} HANDLER_BASE_PATH=dist node ./dist/bin/start.js",
+    "start": "DEBUG=${DEBUG:-example*} node --loader ts-node/esm ./src/bin/start.ts",
+    "test:integration:watch": "DEBUG=knativebus,tests* jest --config jest.integration.json --verbose --watch",
+    "test:integration": "DEBUG=knativebus,tests* jest --config jest.integration.json --verbose",
+    "test:watch": "DEBUG=tests,${DEBUG:-example*} jest --config jest.json --watch --coverage --verbose",
+    "test": "DEBUG=tests,${DEBUG:-example*} jest --no-cache --config ./jest.json --coverage --verbose"
+  },
+  "dependencies": {
+    "body-parser": "1.19.0",
+    "debug": "4.3.3",
+    "express": "4.17.1",
+    "express-pino-logger": "7.0.0",
+    "pino": "7.5.1",
+    "register-server-handlers": "2.6.0"
+  },
+  "devDependencies": {
+    "@jest/globals": "27.4.2",
+    "@types/debug": "4.1.7",
+    "@types/jest": "27.0.3",
+    "@types/node": "16.11.11",
+    "@typescript-eslint/eslint-plugin": "5.5.0",
+    "@typescript-eslint/parser": "5.5.0",
+    "eslint": "8.3.0",
+    "eslint-config-prettier": "8.3.0",
+    "eslint-plugin-jest": "25.3.0",
+    "eslint-plugin-prettier": "4.0.0",
+    "husky": "7.0.4",
+    "jest": "27.3.1",
+    "lint-staged": "12.1.2",
+    "nodemon": "2.0.15",
+    "prettier": "2.5.0",
+    "ts-jest": "27.0.7",
+    "ts-node": "10.4.0",
+    "typescript": "4.5.2"
+  },
+  "license": "ISC",
+  "snyk": true,
+  "lint-staged": {
+    "*.{js,mjs}": "eslint --cache --fix"
+  }
+}
