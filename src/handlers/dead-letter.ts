@@ -13,5 +13,5 @@ export const handle = async (
     type,
   });
 
-  response.status(202).json({ status: "logged" });
+  response.status(202).send();
 };
