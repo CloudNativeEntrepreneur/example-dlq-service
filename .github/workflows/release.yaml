@@ -56,10 +56,21 @@ jobs:
         minor_pattern: "feat:"
         bump_each_commit: true
 
-    - name: Update version in manifest
+    - name: Build Changelog
+      id: changelog
+      uses: mikepenz/release-changelog-builder-action@v3
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Update version in helm values
       uses: mikefarah/yq@master
       with:
         cmd: yq -i '.image.tag = "${{ steps.version.outputs.version_tag }}"' helm/values.yaml
+    
+    - name: Update version in helm chart
+      uses: mikefarah/yq@master
+      with:
+        cmd: yq -i '.version = "${{ steps.version.outputs.version_tag }}"' helm/Chart.yaml
 
     - name: Commit changes
       run: |
@@ -74,12 +85,6 @@ jobs:
         github_token: ${{ secrets.GH_ORG_TOKEN }}
         branch: ${{ steps.version.outputs.version_tag }}
         tags: true
-
-    - name: Build Changelog
-      id: changelog
-      uses: mikepenz/release-changelog-builder-action@v3
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Release
       uses: softprops/action-gh-release@v1
