@@ -5,7 +5,7 @@ environments:
 repositories:
 - name: jx3
   url: https://jenkins-x-charts.github.io/repo
-- name: cne
+- name: cloudnativeentrepreneur
   url: https://cloudnativeentrepreneur.github.io/helm-charts/
 - name: bitnami
   url: https://charts.bitnami.com/bitnami
