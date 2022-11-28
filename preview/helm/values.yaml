@@ -1,5 +1,6 @@
-pr:
-headRef:
-tag:
-repository:
-  name:
+name: example-dlq-service
+pr: pr-0
+headRef: HEAD
+tag: latest
+repository: CloudNativeEntrepreneur/example-dlq-service
+project: dev
