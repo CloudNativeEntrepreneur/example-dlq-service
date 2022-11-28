@@ -1,0 +1,5 @@
+name: example-dlq-service
+version: HEAD
+project: dev
+repository: CloudNativeEntrepreneur/example-dlq-service
+values: ""
