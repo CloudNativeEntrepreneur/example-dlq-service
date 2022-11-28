@@ -3,7 +3,7 @@
 # Declare variables to be passed into your templates.
 image:
   repository: ghcr.io/cloudnativeentrepreneur/example-dlq-service
-  tag: latest
+  tag: v0.7.1
   pullPolicy: IfNotPresent
 # define environment variables here as a map of key: value
 env:
@@ -34,5 +34,4 @@ resources:
 knative:
   minScale: 1
   maxScale: 3
-
 local: false
