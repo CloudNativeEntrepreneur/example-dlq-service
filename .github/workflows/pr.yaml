@@ -38,7 +38,6 @@ jobs:
       container: true
       environment_repository: CloudNativeEntrepreneur/example-preview-envs
       project: example-preview-envs
-      edit-mode: replace
       comment: |
         Your preview environment has been published! :rocket:
 
