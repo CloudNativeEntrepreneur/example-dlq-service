@@ -1,3 +1,3 @@
-# example-dead-letter
+# example-dlq-service
 
 logs dead messages
